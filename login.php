@@ -1,8 +1,24 @@
+<?php 
+  if($_POST){
+    require_once 'DAO.php';
+    $db=new DB();
+    $data['email'] = $_POST['email'];
+    $judge['email'] = '=';
+    list($conSql, $mapConData) = $db->FDFields($data, 'and', $judge);
+    $mData = $db->fetch('select * from users where ' . $conSql , $mapConData);
+    if($mData['pswd']==$_POST['pswd']){
+      session_start();
+      $_SESSION['email']=$_POST['email'];
+      $_SESSION['nick']=$mData['nick'];
+      header("Location: index.php");
+    }
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title>Login Page | Amaze UI Example</title>
+  <title>登陆页</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="format-detection" content="telephone=no">
@@ -27,29 +43,18 @@
 <body>
 <div class="header">
   <div class="am-g">
-    <h1>Web ide</h1>
-    <p>Integrated Development Environment<br/>代码编辑，代码生成，界面设计，调试，编译</p>
+    <h1>登陆</h1>
   </div>
   <hr />
 </div>
 <div class="am-g">
   <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
-    <h3>登录</h3>
-    <hr>
-    <div class="am-btn-group">
-      <a href="#" class="am-btn am-btn-secondary am-btn-sm"><i class="am-icon-github am-icon-sm"></i> Github</a>
-      <a href="#" class="am-btn am-btn-success am-btn-sm"><i class="am-icon-google-plus-square am-icon-sm"></i> Google+</a>
-      <a href="#" class="am-btn am-btn-primary am-btn-sm"><i class="am-icon-stack-overflow am-icon-sm"></i> stackOverflow</a>
-    </div>
-    <br>
-    <br>
-
-    <form method="post" class="am-form">
+    <form method="post" class="am-form" action="login.php">
       <label for="email">邮箱:</label>
-      <input type="email" name="" id="email" value="">
+      <input type="email" name="email" id="email" value="">
       <br>
       <label for="password">密码:</label>
-      <input type="password" name="" id="password" value="">
+      <input type="password" name="pswd" id="password" value="">
       <br>
       <label for="remember-me">
         <input id="remember-me" type="checkbox">
@@ -62,7 +67,7 @@
       </div>
     </form>
     <hr>
-    <p>© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+    <p>© 2015 Dodd.</p>
   </div>
 </div>
 </body>
