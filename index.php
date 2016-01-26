@@ -67,7 +67,15 @@
   <div class="am-g">
     <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
     <table class="am-table am-table-bordered am-table-radius am-table-centered">
-      <?php require 'problem.php'; ?>
+      <?php require_once 'config.php';?>
+      <?php 
+        foreach ($problemArray as $key => $value) {
+          if($key!='0'){
+            $des=$value['des'];
+            print("<tr><td>$key.$des</td><td><button class='am-btn am-btn-primary' onclick='showSubmit(this,$key);'>提 交</button></td>");
+          }
+        }
+      ?>
     </table>
     </div>
   </div>
@@ -80,10 +88,8 @@
   <div class="am-modal-dialog">
     <div class="am-modal-hd">Amaze UI</div>
     <div class="am-modal-bd">
-      来来来，吐槽点啥吧
-      <form action="" >
-        <input type="text" class="am-modal-prompt-input">
-      </form>
+      <p style="color:red;">结果填空或只需要填结果和挖空代码，请不要有多余的空格。</p>
+      <textarea id="ansarea" cols ="65" rows = "5"></textarea>
     </div>
     <div class="am-modal-footer">
       <span class="am-modal-btn" data-am-modal-cancel>取消</span>
@@ -92,16 +98,48 @@
   </div>
 </div>
 <script type="text/javascript">
-function showSubmit (x) {
-  $('#my-prompt').modal({
-      relatedTarget: this,
-      onConfirm: function(e) {
-        alert('你输入的是：' + e.data || '')
-      },
-      onCancel: function(e) {
-        alert('不想说!');
+function showSubmit (thix,x) {
+  var xmlhttp;
+  if (window.XMLHttpRequest){
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  }
+  else{
+    // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function(){
+    if (xmlhttp.readyState==4 && xmlhttp.status==200){
+      $(thix).html(xmlhttp.responseText);
+      if(xmlhttp.responseText=='AC'){
+        $(thix).attr("class", "am-btn am-btn-success");
+        $(thix).attr("disabled", "disabled");
       }
+      if(xmlhttp.responseText=='WA')$(thix).attr("class", "am-btn am-btn-danger");
+      //alert('返回的是：' + xmlhttp.responseText || '');
+      $.AMUI.progress.done();
+    }
+  }
+  $('#my-prompt').modal();
+  $(function() {
+    var $prompt = $('#my-prompt');
+    var $confirmBtn = $prompt.find('[data-am-modal-confirm]');
+    var $cancelBtn = $prompt.find('[data-am-modal-cancel]');
+    $confirmBtn.unbind("click");
+    $confirmBtn.on('click', function(e) {
+      // do something
+        xmlhttp.open("POST",'submit.php',true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        //alert(encodeURIComponent($("#ansarea").val()));
+        xmlhttp.send("pid="+x+"&ans="+encodeURIComponent($("#ansarea").val()));
+        $("#ansarea").val("");
+        $.AMUI.progress.start();
     });
+
+    //$cancelBtn.off('click.cancel.modal.amui').on('click', function() {
+      // do something
+   // });
+  });
 }
 </script>
 <!--[if (gte IE 9)|!(IE)]><!-->
