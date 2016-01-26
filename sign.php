@@ -8,7 +8,7 @@ require_once 'DAO.php';
       $inData['nick'] = $_POST['nick'];
       $inData['email'] = $_POST['email'];
       $inData['pswd'] = $_POST['pswd'];
-      $ret = $db->insert('users', $inData);
+      $ret = $db->insert('blueSySusers', $inData);
       echo '插入' . ($ret ? '成功' : '失败') . '<br/>';
     }
   }

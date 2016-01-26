@@ -5,7 +5,7 @@
     $data['email'] = $_POST['email'];
     $judge['email'] = '=';
     list($conSql, $mapConData) = $db->FDFields($data, 'and', $judge);
-    $mData = $db->fetch('select * from users where ' . $conSql , $mapConData);
+    $mData = $db->fetch('select * from blueSySusers where ' . $conSql , $mapConData);
     if($mData['pswd']==$_POST['pswd']){
       session_start();
       $_SESSION['email']=$_POST['email'];
