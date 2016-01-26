@@ -63,29 +63,47 @@
   <div class="am-g">
     <h4 style="text-align:center; margin:0; color:red;"><?php require_once 'config.php'; print($BEGIN_TIME.'——'.$END_TIME); ?></h4>
   </div>
+  <hr  />
+  <div class="am-g">
+    <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
+    <table class="am-table am-table-bordered am-table-radius am-table-centered">
+      <?php require 'problem.php'; ?>
+    </table>
+    </div>
+  </div>
 <div class="am-g">
-  <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
-    <form method="post" class="am-form" action="">
-      <label for="email">邮箱:</label>
-      <input type="email" name="email" id="email" value="">
-      <br>
-      <label for="password">密码:</label>
-      <input type="password" name="pswd" id="password" value="">
-      <br>
-      <label for="remember-me">
-        <input id="remember-me" type="checkbox">
-        记住密码
-      </label>
-      <br />
-      <div class="am-cf">
-        <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
-        <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
-      </div>
-    </form>
-    <hr>
-    <p>© 2015 Dodd.</p>
+<hr>
+<p style="text-align:center;">© 2015 Dodd.</p>
+</div>
+
+<div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">Amaze UI</div>
+    <div class="am-modal-bd">
+      来来来，吐槽点啥吧
+      <form action="" >
+        <input type="text" class="am-modal-prompt-input">
+      </form>
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+      <span class="am-modal-btn" data-am-modal-confirm>提交</span>
+    </div>
   </div>
 </div>
+<script type="text/javascript">
+function showSubmit (x) {
+  $('#my-prompt').modal({
+      relatedTarget: this,
+      onConfirm: function(e) {
+        alert('你输入的是：' + e.data || '')
+      },
+      onCancel: function(e) {
+        alert('不想说!');
+      }
+    });
+}
+</script>
 <!--[if (gte IE 9)|!(IE)]><!-->
 <script src="assets/js/jquery.min.js"></script>
 <!--<![endif]-->
