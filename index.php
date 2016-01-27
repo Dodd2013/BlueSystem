@@ -51,7 +51,9 @@ function getans (thix,x) {
     $(thix).html("<i class='am-icon-spinner am-icon-spin'></i>判题中");
     $(thix).attr("class","am-btn am-btn-warning");
     $(thix).attr("disabled","disabled");
-    setTimeout(getans(thix,x),<?php print($TIME_TO_GETANS); ?>);
+    setTimeout(function() {
+      getans(thix,x);
+    },<?php print($TIME_TO_GETANS); ?>);
   }else if(res=='AC'){
     $(thix).html("<i class='am-icon am-icon-check-square'></i>正确");
     $(thix).attr("class","am-btn am-btn-success");

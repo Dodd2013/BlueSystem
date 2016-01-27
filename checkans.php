@@ -19,6 +19,7 @@ if($_POST){
 			echo "WA";
 			$upData = 0;
 		}
+		if($mData['score']==NULL)
 		$row=$db->exec("update blueSySSubmit set score=".$upData." where submit_id=".$_POST['submit_id'].";");
 		//echo "更新行数:$row";
 	}else{
@@ -29,16 +30,27 @@ if($_POST){
 		$result=$solutionData['result'];
 		if($result=='4'){
 			echo "AC";
+			if($mData['score']==NULL)
+			$db->exec("update blueSySSubmit set score=100 where submit_id=".$_POST['submit_id'].";");
 		}else if($result=='0'||$result=='2'){
 			echo "panding";
 		}else if($result=='6'){
 			echo "WA".$solutionData['pass_rate'];
+			$score=intval(substr($solutionData['pass_rate'],2));
+			if($mData['score']==NULL)
+			$db->exec("update blueSySSubmit set score=$score where submit_id=".$_POST['submit_id'].";");
 		}else if($result=='3'){
 			echo "TLE";
+			if($mData['score']==NULL)
+			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
 		}else if($result=='11'){
 			echo "CP";
+			if($mData['score']==NULL)
+			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
 		}else if($result=='7'){
 			echo "MLE";
+			if($mData['score']==NULL)
+			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
 		}
 	}
 	//var_dump($mData);
