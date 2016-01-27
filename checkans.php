@@ -33,8 +33,13 @@ if($_POST){
 			echo "panding";
 		}else if($result=='6'){
 			echo "WA".$solutionData['pass_rate'];
+		}else if($result=='3'){
+			echo "TLE";
+		}else if($result=='11'){
+			echo "CP";
+		}else if($result=='7'){
+			echo "MLE";
 		}
-
 	}
 	//var_dump($mData);
 }

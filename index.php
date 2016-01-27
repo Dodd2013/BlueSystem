@@ -9,7 +9,7 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title>登陆页</title>
+  <title>Bule System</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="format-detection" content="telephone=no">
@@ -59,6 +59,21 @@ function getans (thix,x) {
   }else if(res.substring(0,2)=='WA'){
     if(res.substring(3)=='')msg='错误';
     else msg="部分正确  "+res.substring(4)+"%";
+    $(thix).html("<i>"+msg+"</i>");
+    $(thix).attr("class","am-btn am-btn-danger");
+    $(thix).removeAttr("disabled");
+  }else if(res.substring(0,2)=='CP'){
+    msg='编译错误';
+    $(thix).html("<i>"+msg+"</i>");
+    $(thix).attr("class","am-btn am-btn-danger");
+    $(thix).removeAttr("disabled");
+  }else if(res=='TLE'){
+    msg='时间超限';
+    $(thix).html("<i>"+msg+"</i>");
+    $(thix).attr("class","am-btn am-btn-danger");
+    $(thix).removeAttr("disabled");
+  }else if(res=='MLE'){
+    msg='内存超限';
     $(thix).html("<i>"+msg+"</i>");
     $(thix).attr("class","am-btn am-btn-danger");
     $(thix).removeAttr("disabled");
@@ -151,6 +166,7 @@ function showSubmit (thix,x) {
   <div class="am-g">
     <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered">
     <table class="am-table am-table-bordered am-table-radius am-table-centered">
+    <tr><td>点击右侧按钮下载试题压缩包</td><td><a class="am-btn am-btn-primary" href="<?php require_once 'config.php'; print($PROBLEM_RAR);?>">点击下载</a></td></tr>
       <?php require_once 'config.php';?>
       <?php 
       require_once 'DAO.php';

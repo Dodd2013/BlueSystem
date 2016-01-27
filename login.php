@@ -56,14 +56,14 @@
       <label for="password">密码:</label>
       <input type="password" name="pswd" id="password" value="">
       <br>
-      <label for="remember-me">
+<!--       <label for="remember-me">
         <input id="remember-me" type="checkbox">
         记住密码
-      </label>
+      </label> -->
       <br />
       <div class="am-cf">
         <input type="submit" name="" value="登 录" class="am-btn am-btn-primary am-btn-sm am-fl">
-        <input type="submit" name="" value="忘记密码 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
+        <input type="button" onclick="location.href='sign.php'" name="" value="没有帐号 ^_^? " class="am-btn am-btn-default am-btn-sm am-fr">
       </div>
     </form>
     <hr>
