@@ -104,6 +104,7 @@ class DB {
             $mapData = array_merge($mapData, $mapSetData);
             list($where, $mapData) = $this->FDCondition($condition, $mapData);
             $sql .= $where ? ' WHERE ' . $where : '';
+        //echo "$sql";
             $pdoStatement = $this->pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $execRet = $pdoStatement->execute($mapData);
             return $execRet ? ($returnRowCount ? $pdoStatement->rowCount() : $execRet) : false;
@@ -111,7 +112,13 @@ class DB {
             return false;
         }
     }
-     
+    public function exec($sql)
+    {
+        //echo "$sql";
+        $pdoStatement=$this->pdo->prepare($sql);
+        $execRet=$pdoStatement->execute(array());
+        return $execRet;
+    }
     public function delete($tableName, $condition, $mapData = array()) {
         if(!empty($tableName) && $condition){
             $sql = 'DELETE FROM ' . $tableName;
