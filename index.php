@@ -113,13 +113,13 @@ function showSubmit (thix,x) {
       }
       xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState==4 && xmlhttp.status==200){
-          if(xmlhttp.responseText.substring(1,3)!='ok'){$(thix).attr("class","am-btn am-btn-default");$(thix).html(xmlhttp.responseText);$.AMUI.progress.done();}
+          if(xmlhttp.responseText.substring(0,2)!='ok'){$(thix).attr("class","am-btn am-btn-default");$(thix).html(xmlhttp.responseText);$.AMUI.progress.done();}
           else{
             $(thix).html("<i class='am-icon-spinner am-icon-spin'></i> 提交成功");
             $(thix).attr("class","am-btn am-btn-warning");
             $(thix).attr("disabled","disabled");
             $.AMUI.progress.done();
-            setTimeout(getans(thix,xmlhttp.responseText.substring(4)),<?php print($TIME_TO_GETANS); ?>);
+            setTimeout(getans(thix,xmlhttp.responseText.substring(3)),<?php print($TIME_TO_GETANS); ?>);
           }
           
         }

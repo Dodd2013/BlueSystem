@@ -11,6 +11,16 @@ if($_POST){
 	$judge['submit_id'] = '=';
 	list($conSql, $mapConData) = $db->FDFields($data, 'and', $judge);
 	$mData = $db->fetch('select * from blueSySSubmit where ' . $conSql, $mapConData);
+	if((strtotime($BEGIN_TIME)<$current_time&&$current_time<strtotime($END_TIME))&&$MODE==1){}
+		else if($mData['score']=='0'){
+			die("WA");
+
+		}else if($mData['score']=='100'){
+			die("AC");
+		}else if($mData['score']!=NULL){
+			die("WA##".$mData['score']);
+		}
+	
 	if($problemArray[$mData['pid']]['type']=='结果'){
 		if($mData['ans']==$problemArray[$mData['pid']]['ans']){
 			$msg = "AC";
@@ -48,9 +58,11 @@ if($_POST){
 			$msg = "CP";
 			if($mData['score']==NULL)
 			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
-		}else if($result=='7'){
+		}else if($result=='7'||$result=='8'){
 			$msg = "MLE";
 			if($mData['score']==NULL)
+			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
+		}else{
 			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
 		}
 	}
