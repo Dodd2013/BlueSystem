@@ -9,7 +9,7 @@
 <html>
 <head lang="en">
   <meta charset="UTF-8">
-  <title>Bule System</title>
+  <title>Blue System</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="format-detection" content="telephone=no">
@@ -87,20 +87,21 @@ function getans (thix,x) {
 }
 }
 function showSubmit (thix,x) {
+
   var xmlhttp;
   if (window.XMLHttpRequest){
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
   }
-  else{
-    // code for IE6, IE5
     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
   xmlhttp.onreadystatechange=function(){
     if (xmlhttp.readyState==4 && xmlhttp.status==200){
       if(xmlhttp.responseText.substring(0,2)!='ok'){$(thix).html(xmlhttp.responseText);$.AMUI.progress.done();}
       else{
-        $(thix).html("<i class='am-icon-spinner am-icon-spin'></i> 提交成功");
+        $(thix).html("<i class='am-icon-spinner am-ic
+  else{
+    // code for IE6, IE5on-spin'></i> 提交成功");
         $(thix).attr("class","am-btn am-btn-warning");
         $(thix).attr("disabled","disabled");
         $.AMUI.progress.done();
@@ -135,7 +136,7 @@ function showSubmit (thix,x) {
 <body>
 <header class="am-topbar admin-header">
   <div class="am-topbar-brand">
-    <strong>BuleSystem</strong> <small>在线训练系统</small>
+    <strong>BlueSystem</strong> <small>在线训练系统</small>
   </div>
 
   <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
