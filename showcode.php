@@ -16,6 +16,8 @@ if($_GET){
 		$data['pid'] = $_GET['pid'];
 		$judge['pid'] = '=';
 	}
+	$data['context_code'] = $CONTEXT_CODE;
+	$judge['context_code'] = '=';
 	list($conSql, $mapConData) = $db->FDFields($data, 'and', $judge);
 	$mData = $db->fetch('select * from blueSySSubmit where ' . $conSql . ' order by `submit_id` desc', $mapConData);
 	if($mData['ans']!=NULL){
