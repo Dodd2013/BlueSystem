@@ -113,7 +113,7 @@ function showSubmit (thix,x) {
       }
       xmlhttp.onreadystatechange=function(){
         if (xmlhttp.readyState==4 && xmlhttp.status==200){
-          if(xmlhttp.responseText.substring(0,2)!='ok'){$(thix).attr("class","am-btn am-btn-default");$(thix).html(xmlhttp.responseText);$.AMUI.progress.done();}
+          if(xmlhttp.responseText.substring(0,2)!='ok'){$(thix).attr("class","am-btn am-btn-default");$(thix).attr("disabled","disabled");$(thix).html(xmlhttp.responseText);$.AMUI.progress.done();}
           else{
             $(thix).html("<i class='am-icon-spinner am-icon-spin'></i> 提交成功");
             $(thix).attr("class","am-btn am-btn-warning");

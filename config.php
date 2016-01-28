@@ -9,9 +9,9 @@
  static $EMAIL_LOGINID="";  //邮箱帐号
  static $EMAIL_PWD="";      //邮箱密码
  static $NUM_OF_PROBLEM_PAGE=10;//一页显示多少个问题
- static $MODE=0; //比赛模式为1，训练模式为0;
- static $BEGIN_TIME="2016-01-26 14:19:00";
- static $END_TIME="2016-01-30 15:19:00";
+ static $MODE=1; //比赛模式为1，训练模式为0;
+ static $BEGIN_TIME="2016-01-28 23:30:00";
+ static $END_TIME="2016-01-29 23:59:59";
  static $CONTEXT_NAME="测试!";
  static $CONTEXT_CODE="1235";//请确保每次比赛的context_code不相同
  static $TIME_TO_GETANS=2000;

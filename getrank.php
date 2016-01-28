@@ -62,7 +62,7 @@ if($_GET){
 		print("</table>");
 		//array(8) { ["submit_id"]=> string(1) "6" ["context_code"]=> string(4) "0001" ["pid"]=> string(1) "1" ["email"]=> string(17) "Dodd@Dodd2014.com" ["ans"]=> string(3) "123" ["solution_id"]=> NULL ["submit_time"]=> string(19) "2016-01-27 13:51:11" ["score"]=> string(3) "100" }
 	}else{
-		print("<h1>不存在该比赛！</h1>");
+		print("<h1>不存在该比赛！或者该比赛无人提交！</h1>");
 	}
 }
 ?>

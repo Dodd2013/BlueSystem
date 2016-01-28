@@ -66,6 +66,7 @@ if($_POST){
 			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
 		}
 	}
+	if($msg=='panding')die("panding");
 	if((strtotime($BEGIN_TIME)<$current_time&&$current_time<strtotime($END_TIME))&&$MODE==1){die('wait');}
 	else print($msg);
 	//var_dump($mData);
