@@ -42,6 +42,7 @@
 				$inData2['context_code'] = $CONTEXT_CODE;
 				$inData2['email'] = $_SESSION['email'];
 				$inData2['solution_id'] = $ret;
+				$inData2['ans'] = $_POST['ans'];
 				$inData2['submit_time']=date('Y-m-d H:i:s',time());
 				$inData2['pid']=$pid;
 				$ret2 = $db->insert('blueSySSubmit', $inData2,true);
