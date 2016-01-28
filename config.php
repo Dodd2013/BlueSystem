@@ -20,7 +20,7 @@
   array('des'=>'骰子迷题','type'=>'结果','ans'=>'2 2 2 2 8 8'),
   array('des'=>'空白格式化','type'=>'代码','ans'=>'1001','replace'=>'2.cpp'),
   array('des'=>'约数倍数选卡片','type'=>'编程','ans'=>'1002'),
-  array('des'=>'生物芯片','type'=>'编程','ans'=>'1000')
+  //array('des'=>'生物芯片','type'=>'编程','ans'=>'1000')
   // array('des'=>'Log大侠','type'=>'编程','ans'=>'1000')
   );
 ?>
