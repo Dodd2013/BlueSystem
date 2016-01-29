@@ -227,7 +227,7 @@ function showSubmit (thix,x) {
     <div class="am-modal-hd">Amaze UI</div>
     <div class="am-modal-bd">
       <p style="color:red;">结果填空或只需要填结果和挖空代码，请不要有多余的空格。</p>
-      <textarea id="ansarea" cols ="65" rows = "5"></textarea>
+      <textarea style="width:100%;" id="ansarea" cols ="65" rows = "5"></textarea>
     </div>
     <div class="am-modal-footer">
       <span class="am-modal-btn" data-am-modal-cancel>取消</span>
