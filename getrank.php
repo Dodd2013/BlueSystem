@@ -3,6 +3,15 @@ if($_GET){
 	require_once 'DAO.php';
 	require_once 'config.php';
 	$db=new DB();
+	$data1['context_code'] = $_GET['context_code'];
+	$judge1['context_code'] = '=';
+	list($conSql1, $mapConData1) = $db->FDFields($data1, 'and', $judge1);
+	$mData1 = $db->fetchALL('select * from blueSySSubmit where ' . $conSql1.'and score is null order by submit_id asc', $mapConData1,array(0,5000));
+	require_once 'updateans.php';
+	foreach ($mData1 as $key => $value) {
+		updateans($value['submit_id']);
+		var_dump($value['submit_id']);
+	}
 	$data['context_code'] = $_GET['context_code'];
 	$judge['context_code'] = '=';
 
