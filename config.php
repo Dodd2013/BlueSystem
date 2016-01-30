@@ -17,9 +17,9 @@
  static $TIME_TO_GETANS=2000;
  static $PROBLEM_RAR='problem.zip';
  static $problemArray=array(array(),
-  array('des'=>'骰子迷题','type'=>'结果','ans'=>'2 2 2 2 8 8'),
-  array('des'=>'空白格式化','type'=>'代码','ans'=>'1001','replace'=>'2.cpp'),
- array('des'=>'约数倍数选卡片','type'=>'编程','ans'=>'1002')
+  array('des'=>'骰子迷题','type'=>'结果','ans'=>'2 2 2 2 8 8','score'=>20),
+  array('des'=>'空白格式化','type'=>'代码','ans'=>'1001','replace'=>'2.cpp','score'=>20),
+ array('des'=>'约数倍数选卡片','type'=>'编程','ans'=>'1002','score'=>60)
  //  array('des'=>'青岛大学的简称','type'=>'结果','ans'=>'QDU'),
  //  array('des'=>'a+b 填空题','type'=>'代码','ans'=>'1000','replace'=>'1.cpp'),
  // array('des'=>'a+b 编程题','type'=>'编程','ans'=>'1000'),

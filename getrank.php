@@ -10,7 +10,7 @@ if($_GET){
 	require_once 'updateans.php';
 	foreach ($mData1 as $key => $value) {
 		updateans($value['submit_id']);
-		var_dump($value['submit_id']);
+		//var_dump($value['submit_id']);
 	}
 	$data['context_code'] = $_GET['context_code'];
 	$judge['context_code'] = '=';
@@ -28,15 +28,23 @@ if($_GET){
 			$table[$email][$pid]['score']=intval($value1['score']);
 			$table[$email][$pid]['times']++;
 		}
+		// foreach ($table as $key => $value) {
+		// 	foreach ($value as $key1 => $value1) {
+		// 		var_dump('dfsa'.$key.'key1:'.$key1);
+		// 		if(isset($table[$key]['sum']))$table[$key]['sum']+=$value1['score']*$problemArray[$key1]['score']/100;
+		// 	else $table[$key]['sum']=0;
+		// 	}
+		// }
 		//var_dump($table);
 		uasort($table, function($a, $b) {
 			$al = 0;
 			$bl = 0;
+			require 'config.php';
 			foreach ($a as $key => $value) {
-				$al+=$value['score'];
+				$al+=$value['score']*$problemArray[$key]['score']/100;
 			}
 			foreach ($b as $key => $value) {
-				$bl+=$value['score'];
+				$bl+=$value['score']*$problemArray[$key]['score']/100;
 			}
             if ($al == $bl)
                 return 0;
@@ -47,7 +55,8 @@ if($_GET){
 		print("<th>用户名</th>");
 		$problemNum=count($problemArray)-1;
 		for ($i=1; $i <= $problemNum; $i++) { 
-			print("<th>$i</th>");
+			$scoresum=$problemArray[$i]['score'];
+			print("<th>$i ($scoresum 分)</th>");
 		}
 		print("<th>总分</th>");
 		print("</tr>");
@@ -59,10 +68,10 @@ if($_GET){
 				if(isset($value[$i])){
 					$score=$value[$i]['score'];
 					$times=$value[$i]['times'];
-					$sum+=$score;
-					print("<td>$score($times)</td>");
+					$sum+=$score*$problemArray[$i]['score']/100;
+					print("<td>$score%($times)</td>");
 				}else{
-					print("<td>0(0)</td>");
+					print("<td>0%(0)</td>");
 				}
 			}
 			print("<td>$sum</td>");
