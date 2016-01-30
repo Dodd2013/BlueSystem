@@ -52,6 +52,7 @@ if($_GET){
         });
 		print("<table class ='am-table am-table-bordered am-table-striped am-table-centered am-table-hover'>");
 		print("<tr>");
+		print("<th>排名</th>");
 		print("<th>用户名</th>");
 		$problemNum=count($problemArray)-1;
 		for ($i=1; $i <= $problemNum; $i++) { 
@@ -60,8 +61,11 @@ if($_GET){
 		}
 		print("<th>总分</th>");
 		print("</tr>");
+		$ranki=0;
 		foreach ($table as $key => $value) {
 			print("<tr>");
+			++$ranki;
+			print("<td>$ranki</td>");
 			print("<td>$key</td>");
 			$sum=0;
 			for ($i=1; $i <= $problemNum; $i++) { 
