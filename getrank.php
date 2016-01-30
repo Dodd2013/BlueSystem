@@ -7,12 +7,12 @@ if($_GET){
 	$judge['context_code'] = '=';
 
 	list($conSql, $mapConData) = $db->FDFields($data, 'and', $judge);
-	$mData = $db->fetchALL('select * from blueSySSubmit where ' . $conSql.'and score is not null order by `submit_id` asc', $mapConData,array(0,5000));
+	$mData = $db->fetchALL('select b.nick,a.* from blueSySSubmit as a join blueSySusers as b on a.email=b.email  where a.' . $conSql.'and a.score is not null order by a.submit_id asc', $mapConData,array(0,5000));
 	if($mData){
 		//var_dump($mData);
 		$table=array();
 		foreach ($mData as $key1 => $value1) {
-			$email=$value1['email'];
+			$email=$value1['nick']."  (".$value1['email'].")";
 			$pid=$value1['pid'];
 			if(!isset($table[$email][$pid]['times'])){$table[$email][$pid]['times']=0;}
 			if(!isset($table[$email][$pid]['score'])){$table[$email][$pid]['score']=0;}
