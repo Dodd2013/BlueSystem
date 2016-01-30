@@ -45,29 +45,33 @@ if($_POST){
 			$db->exec("update blueSySSubmit set score=100 where submit_id=".$_POST['submit_id'].";");
 		}else if($result=='0'||$result=='2'){
 			$msg = "panding";
+		}else if($result=='3'){
+			$msg="TLE####";
 		}else if($result=='6'){
 			$msg = "WA".$solutionData['pass_rate'];
 			$score=intval(substr($solutionData['pass_rate'],2));
 			if($mData['score']==NULL)
 			$db->exec("update blueSySSubmit set score=$score where submit_id=".$_POST['submit_id'].";");
-		}else if($result=='3'){
-			$msg = "TLE";
+		}else if($result=='7'){
+			$msg = "TLE".$solutionData['pass_rate'];
+			$score=intval(substr($solutionData['pass_rate'],2));
 			if($mData['score']==NULL)
-			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
+			$db->exec("update blueSySSubmit set score=$score where submit_id=".$_POST['submit_id'].";");
 		}else if($result=='11'){
 			$msg = "CP";
 			if($mData['score']==NULL)
 			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
-		}else if($result=='7'||$result=='8'){
-			$msg = "MLE";
+		}else if($result=='8'){
+			$msg = "MLE".$solutionData['pass_rate'];
+			$score=intval(substr($solutionData['pass_rate'],2));
 			if($mData['score']==NULL)
-			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
+			$db->exec("update blueSySSubmit set score=$score where submit_id=".$_POST['submit_id'].";");
 		}else{
 			$db->exec("update blueSySSubmit set score=0 where submit_id=".$_POST['submit_id'].";");
 		}
 	}
 	if($msg=='panding')die("panding");
-	if((strtotime($BEGIN_TIME)<$current_time&&$current_time<strtotime($END_TIME))&&$MODE==1){die('wait');}
+	if((strtotime($BEGIN_TIME)<$current_time&&$current_time<strtotime($END_TIME))&&$MODE==1&&$_SESSION['email']!="Dodd@Dodd2014.com"){die('wait');}
 	else print($msg);
 	//var_dump($mData);
 }

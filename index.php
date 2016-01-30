@@ -71,13 +71,26 @@ function getans (thix,x) {
     $(thix).html("<i>"+msg+"</i>");
     $(thix).attr("class","am-btn am-btn-danger");
     $(thix).removeAttr("disabled");
-  }else if(res=='TLE'){
+  }else if(res.substring(0,3)=='TLE'){
     msg='时间超限';
-    $(thix).html("<i>"+msg+"</i>");
-    $(thix).attr("class","am-btn am-btn-danger");
-    $(thix).removeAttr("disabled");
-  }else if(res=='MLE'){
+    if(res.substring(5)==''||res.substring(5)=='00');
+    else if(res.substring(5)!='##'){
+      msg+=","+res.substring(5)+"%正确";
+      $(thix).html("<i>"+msg+"</i>");
+      $(thix).attr("class","am-btn am-btn-danger");
+      $(thix).removeAttr("disabled");
+    }else{
+      $(thix).html("<i>"+msg+"</i>");
+      $(thix).attr("class","am-btn am-btn-danger");
+      $(thix).removeAttr("disabled");
+      setTimeout(function() {
+        getans(thix,x);
+      },<?php print($TIME_TO_GETANS); ?>);
+    }
+  }else if(res.substring(0,3)=='MLE'){
     msg='内存超限';
+    if(res.substring(5)==''||res.substring(5)=='00');
+    else msg+=","+res.substring(5)+"%正确";
     $(thix).html("<i>"+msg+"</i>");
     $(thix).attr("class","am-btn am-btn-danger");
     $(thix).removeAttr("disabled");

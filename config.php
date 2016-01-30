@@ -10,19 +10,19 @@
  static $EMAIL_PWD="";      //邮箱密码
  static $NUM_OF_PROBLEM_PAGE=10;//一页显示多少个问题
  static $MODE=1; //比赛模式为1，训练模式为0;
- static $BEGIN_TIME="2016-01-28 23:30:00";
- static $END_TIME="2016-01-29 23:59:59";
- static $CONTEXT_NAME="测试!";
- static $CONTEXT_CODE="1235";//请确保每次比赛的context_code不相同
+ static $BEGIN_TIME="2016-01-30 09:00:00";
+ static $END_TIME="2016-01-30 17:00:00";
+ static $CONTEXT_NAME="BlueSystem 第一次测试";
+ static $CONTEXT_CODE="testone";//请确保每次比赛的context_code不相同
  static $TIME_TO_GETANS=2000;
  static $PROBLEM_RAR='problem.zip';
  static $problemArray=array(array(),
-  //array('des'=>'骰子迷题','type'=>'结果','ans'=>'2 2 2 2 8 8'),
-  //array('des'=>'空白格式化','type'=>'代码','ans'=>'1001','replace'=>'2.cpp'),
- // array('des'=>'约数倍数选卡片','type'=>'编程','ans'=>'1002'),
-  array('des'=>'青岛大学的简称','type'=>'结果','ans'=>'QDU'),
-  array('des'=>'a+b 填空题','type'=>'代码','ans'=>'1000','replace'=>'1.cpp'),
- array('des'=>'a+b 编程题','type'=>'编程','ans'=>'1000'),
+  array('des'=>'骰子迷题','type'=>'结果','ans'=>'2 2 2 2 8 8'),
+  array('des'=>'空白格式化','type'=>'代码','ans'=>'1001','replace'=>'2.cpp'),
+ array('des'=>'约数倍数选卡片','type'=>'编程','ans'=>'1002')
+ //  array('des'=>'青岛大学的简称','type'=>'结果','ans'=>'QDU'),
+ //  array('des'=>'a+b 填空题','type'=>'代码','ans'=>'1000','replace'=>'1.cpp'),
+ // array('des'=>'a+b 编程题','type'=>'编程','ans'=>'1000'),
   //array('des'=>'生物芯片','type'=>'编程','ans'=>'1000')
   // array('des'=>'Log大侠','type'=>'编程','ans'=>'1000')
   );
